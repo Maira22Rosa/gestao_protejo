@@ -21,7 +21,9 @@
   </p>
 
   <p>
-    Data vencimento: <span>{{ tarefa.dataVencimento }}</span> Data atualização:
+    Data vencimento:
+    <span>{{ tarefa.dataVencimento | date : "dd/MM/yyyy" }}</span> Data
+    atualização:
     <span>{{ tarefa.dataAtualizacao | date : "dd/MM/yyyy" }}</span>
   </p>
 </article>
