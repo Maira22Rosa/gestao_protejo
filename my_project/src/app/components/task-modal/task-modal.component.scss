@@ -34,6 +34,12 @@ input[type="text"] {
   outline-color: rgb(0, 89, 255);
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 button {
   margin-top: 16px;
   padding: 8px 16px;
@@ -55,4 +61,14 @@ button:hover {
 
 .icon:hover {
   color: red;
+}
+
+.delete-btn {
+  border: 1px solid red;
+  background-color: white;
+  color: red;
+
+  &:hover {
+    background-color: rgb(235, 126, 99);
+  }
 }

@@ -1,7 +1,7 @@
 <div class="modal-content" (click)="$event.stopPropagation()">
   <h6>
     Adicionar projeto
-    <span (click)="close.emit()" class="material-symbols-outlined icon"
+    <span (click)="closeModal()" class="material-symbols-outlined icon"
       >close</span
     >
   </h6>
@@ -16,6 +16,6 @@
       <input type="text" formControlName="descricao" />
     </label>
 
-    <button type="submit">Salvar</button>
+    <button type="submit" (click)="enviar()">Salvar</button>
   </form>
 </div>

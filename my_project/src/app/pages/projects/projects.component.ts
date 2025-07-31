@@ -1,6 +1,8 @@
+import { TaskService } from 'src/app/services/task-service';
+import { ProjectService } from './../../services/project-service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { TarefaDto } from 'src/app/dados/project-DTO';
+import { ProjetoDto, TarefaDto } from 'src/app/dados/project-DTO';
 import projectsJson from 'src/app/dados/projects-api.json';
 @Component({
   selector: 'app-projects',
@@ -10,10 +12,13 @@ import projectsJson from 'src/app/dados/projects-api.json';
 export class ProjectsComponent implements OnInit {
   viewTaksProjectId: string | null = null;
   viewTaks: boolean = false;
+  isEditing: boolean = false;
   projectForm = new FormGroup({
     nome: new FormControl(''),
     descricao: new FormControl(''),
   });
+  project: any;
+  projectId?: string;
   viewModal: boolean = false;
   viewModalTask: boolean = false;
   listProjects: any[] = [];
@@ -34,7 +39,10 @@ export class ProjectsComponent implements OnInit {
     dataAtualizacao: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(
+    private projectService: ProjectService,
+    private taskService: TaskService
+  ) {}
   ngOnInit() {
     this.listProjects = projectsJson;
   }
@@ -46,16 +54,35 @@ export class ProjectsComponent implements OnInit {
 
   viewModalEmit() {
     this.viewModal = this.viewModal ? false : true;
+    this.isEditing = false;
   }
 
-  onSubmit() {
-    console.log(this.projectForm.value);
+  delete(projectId: string) {
+    this.projectService.deleteProject(projectId);
+    this.listProjects = this.projectService.getProjects();
+  }
+
+  editProject(project: ProjetoDto) {
+    this.viewModalEmit();
+    this.projectForm.patchValue({
+      nome: project.name,
+      descricao: project.description || '',
+    });
+    this.isEditing = true;
+    this.project = project;
+  }
+
+  addTask() {
+    this.viewModalTask = true;
+    this.isEditing = true;
   }
 
   showDadosTask(taskId: string, projectId: string) {
     const projetoSelecionado = this.listProjects.find(
       (project) => project.projectId === projectId
     );
+
+    this.projectId = projectId;
 
     if (!projetoSelecionado) {
       console.error('Projeto não encontrado');

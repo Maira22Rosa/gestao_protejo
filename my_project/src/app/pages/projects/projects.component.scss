@@ -5,6 +5,29 @@ h1 {
   display: flex;
   align-items: center;
 }
+
+.task-add-btn {
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid rgb(0, 89, 255);
+  color: rgb(0, 89, 255);
+  margin-left: 8px;
+  margin-top: 0;
+
+  .icon {
+    font-size: 10px;
+    color: rgb(0, 89, 255);
+  }
+
+  &:hover {
+    background-color: rgb(121, 152, 211);
+    cursor: pointer;
+    color: white;
+  }
+}
 .my-task-btn {
   padding: 6px 12px;
   display: flex;
@@ -61,6 +84,16 @@ section {
     width: 100%;
     margin-top: 12px;
     text-align: center;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-self: right;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
   }
 }
 

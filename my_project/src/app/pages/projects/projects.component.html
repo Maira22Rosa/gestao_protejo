@@ -7,6 +7,17 @@
 <div class="box-projetos">
   <ng-container *ngFor="let project of listProjects">
     <section>
+      <p class="actions">
+        <span
+          class="material-symbols-outlined icon"
+          (click)="delete(project.projectId)"
+          >delete</span
+        ><span
+          class="material-symbols-outlined icon"
+          (click)="editProject(project)"
+          >edit</span
+        >
+      </p>
       <h4>
         Nome: <span>{{ project.name }}</span>
       </h4>
@@ -33,6 +44,10 @@
       </button>
 
       <div *ngIf="viewTaksProjectId === project.projectId">
+        <button class="task-add-btn full-width" (click)="addTask()">
+          <span class="material-symbols-outlined icon">add</span>
+          Adicionar tarefa
+        </button>
         <ng-container *ngFor="let tarefa of project.tasks">
           <app-card-task
             (viewModalTask)="showDadosTask($event.taskId, $event.projetoId)"
@@ -48,6 +63,8 @@
   <app-task-modal
     (close)="viewModalTask = false"
     [taskForm]="taskForm"
+    [task]="task"
+    [projectId]="projectId"
   ></app-task-modal>
 </div>
 
@@ -55,5 +72,7 @@
   <app-project-modal
     (close)="viewModal = false"
     [projectForm]="projectForm"
+    [project]="project"
+    [isEditing]="isEditing"
   ></app-project-modal>
 </div>

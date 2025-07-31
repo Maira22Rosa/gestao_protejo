@@ -10,9 +10,10 @@ export interface TarefaDto {
 }
 
 export interface ProjetoDto {
+  projectId?: string;
   name: string;
   description?: string;
   dateCreate: string;
   dateUpdate: string;
-  tarefas: TarefaDto[];
+  tasks: TarefaDto[];
 }
