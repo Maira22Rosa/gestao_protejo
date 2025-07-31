@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TarefaDto } from 'src/app/dados/project-DTO';
 
@@ -27,11 +27,14 @@ export class CardTaskComponent implements OnInit {
     dataCriacao: '',
     dataAtualizacao: '',
   };
+  @Output() viewModalTask = new EventEmitter<{
+    taskId: string;
+    projetoId: string;
+  }>();
 
   constructor() {}
 
   ngOnInit(): void {
-    console.log('Tarefa recebida:', this.tarefa);
     this.taskForm.patchValue({
       titulo: this.tarefa.titulo,
       descricao: this.tarefa.descricao || '',

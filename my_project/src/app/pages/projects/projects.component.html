@@ -1,34 +1,89 @@
-<h1>Lista de projetos</h1>
-<ng-container *ngFor="let project of listProjects">
-  <div>
+<h1>
+  Lista de projetos
+  <button class="my-task-btn" (click)="viewModalEmit()">
+    <span class="material-symbols-outlined icon">add</span>Adicionar
+  </button>
+</h1>
+<div class="box-projetos">
+  <ng-container *ngFor="let project of listProjects">
     <section>
       <h4>
         Nome: <span>{{ project.name }}</span>
-        <button class="my-task-btn" (click)="viewModalEmit()">Adicionar</button>
       </h4>
+
       <h4>
         Descrição: <span>{{ project.description }}</span>
       </h4>
+
       <h4>
         Data de criação:
         <span>{{ project.dateCreate | date : "dd/MM/yyyy" }}</span>
       </h4>
+
       <h4>
         Data de Atualização:
         <span>{{ project.dateUpdate | date : "dd/MM/yyyy" }}</span>
       </h4>
-      <button class="my-task-btn" (click)="viewTaskEmit()">
+
+      <button
+        class="my-task-btn full-width"
+        (click)="viewTaskEmit(project.projectId)"
+      >
         Minhas tarefas
       </button>
 
-      <div *ngIf="viewTaks">
+      <div *ngIf="viewTaksProjectId === project.projectId">
         <ng-container *ngFor="let tarefa of project.tasks">
-          <app-card-task [tarefa]="tarefa"></app-card-task
-        ></ng-container>
+          <app-card-task
+            (viewModalTask)="showDadosTask($event.taskId, $event.projetoId)"
+            [tarefa]="tarefa"
+          ></app-card-task>
+        </ng-container>
       </div>
     </section>
+  </ng-container>
+</div>
+
+<div *ngIf="viewModalTask" class="modal-backdrop">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h6>
+      Tarefa {{ task.taskId }} - {{ task.status.toLowerCase() }}
+      <span
+        class="material-symbols-outlined icon"
+        (click)="viewModalTask = false"
+        >close</span
+      >
+    </h6>
+    <form [formGroup]="taskForm">
+      <label>
+        Título:
+        <input type="text" formControlName="titulo" />
+      </label>
+
+      <label>
+        Descrição:
+        <input type="text" formControlName="descricao" />
+      </label>
+
+      <label>
+        Data de Vencimento:
+        <input type="text" formControlName="dataVencimento" />
+      </label>
+
+      <label>
+        Data de Criação:
+        <input type="text" formControlName="dataCriacao" />
+      </label>
+
+      <label>
+        Data de Atualização:
+        <input type="text" formControlName="dataAtualizacao" />
+      </label>
+
+      <button type="submit">Salvar</button>
+    </form>
   </div>
-</ng-container>
+</div>
 
 <div *ngIf="viewModal" class="modal-backdrop" (click)="close()">
   <div class="modal-content" (click)="$event.stopPropagation()">
