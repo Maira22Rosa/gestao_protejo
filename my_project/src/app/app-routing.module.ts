@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './pages/form/form.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 
 const routes: Routes = [
@@ -13,10 +12,6 @@ const routes: Routes = [
   {
     path: 'lista-projetos',
     component: ProjectsComponent,
-  },
-  {
-    path: 'formulario',
-    component: FormComponent,
   },
 ];
 
