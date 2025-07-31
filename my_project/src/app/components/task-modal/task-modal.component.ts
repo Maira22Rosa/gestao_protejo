@@ -46,7 +46,6 @@ export class TaskModalComponent {
 
   enviar() {
     const now = new Date().toISOString();
-
     if (this.isEditing) {
       const updatedTask = {
         taskId: this.task.taskId,

@@ -1,4 +1,3 @@
-import { TaskService } from 'src/app/services/task-service';
 import { ProjectService } from './../../services/project-service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -13,6 +12,8 @@ export class ProjectsComponent implements OnInit {
   viewTaksProjectId: string | null = null;
   viewTaks: boolean = false;
   isEditing: boolean = false;
+  isEditingTask: boolean = false;
+
   projectForm = new FormGroup({
     nome: new FormControl(''),
     descricao: new FormControl(''),
@@ -39,10 +40,7 @@ export class ProjectsComponent implements OnInit {
     dataAtualizacao: new FormControl(''),
   });
 
-  constructor(
-    private projectService: ProjectService,
-    private taskService: TaskService
-  ) {}
+  constructor(private projectService: ProjectService) {}
   ngOnInit() {
     this.listProjects = projectsJson;
   }
@@ -74,7 +72,7 @@ export class ProjectsComponent implements OnInit {
 
   addTask() {
     this.viewModalTask = true;
-    this.isEditing = true;
+    this.isEditingTask = false;
   }
 
   showDadosTask(taskId: string, projectId: string) {
@@ -100,6 +98,7 @@ export class ProjectsComponent implements OnInit {
 
     this.task = tarefaSelecionada;
     this.viewModalTask = true;
+    this.isEditingTask = true;
 
     this.taskForm.patchValue({
       titulo: this.task.titulo,
