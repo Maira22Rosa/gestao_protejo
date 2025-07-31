@@ -1,0 +1,47 @@
+:root {
+  --cor-font: #d9d9d9;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.login {
+  display: grid;
+  h1 {
+    font-family: "Inter";
+    font-weight: 400;
+  }
+  input {
+    border: solid 1px #d9d9d9;
+    color: var(--cor-primaria);
+    border-radius: 4px;
+    height: 32px;
+    width: 40vh;
+    padding-left: 4px;
+    margin-bottom: 20px;
+  }
+  input::placeholder {
+    padding: 12px;
+    color: #aaaaaa;
+    font-style: "Inter";
+    font-size: 12px;
+  }
+  button {
+    border: none;
+    width: 40vh;
+    height: 38px;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(0, 89, 255);
+    font-size: 16px;
+    border-radius: 4px;
+
+    & {
+      cursor: pointer;
+    }
+  }
+}

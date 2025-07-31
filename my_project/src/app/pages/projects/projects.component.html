@@ -1,0 +1,55 @@
+<h1>Lista de projetos</h1>
+<ng-container *ngFor="let project of listProjects">
+  <div>
+    <section>
+      <h4>
+        Nome: <span>{{ project.name }}</span>
+        <button class="my-task-btn" (click)="viewModalEmit()">Adicionar</button>
+      </h4>
+      <h4>
+        Descrição: <span>{{ project.description }}</span>
+      </h4>
+      <h4>
+        Data de criação:
+        <span>{{ project.dateCreate | date : "dd/MM/yyyy" }}</span>
+      </h4>
+      <h4>
+        Data de Atualização:
+        <span>{{ project.dateUpdate | date : "dd/MM/yyyy" }}</span>
+      </h4>
+      <button class="my-task-btn" (click)="viewTaskEmit()">
+        Minhas tarefas
+      </button>
+
+      <div *ngIf="viewTaks">
+        <ng-container *ngFor="let tarefa of project.tasks">
+          <app-card-task [tarefa]="tarefa"></app-card-task
+        ></ng-container>
+      </div>
+    </section>
+  </div>
+</ng-container>
+
+<div *ngIf="viewModal" class="modal-backdrop" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h6>
+      Adicionar projeto
+      <span (click)="close()" class="material-symbols-outlined icon"
+        >close</span
+      >
+    </h6>
+    <form [formGroup]="meuFormulario" (ngSubmit)="onSubmit()">
+      <label>
+        Nome:
+        <input type="text" formControlName="nome" />
+      </label>
+
+      <label>
+        Descrição:
+        <input type="text" formControlName="descricao" />
+      </label>
+
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+</div>

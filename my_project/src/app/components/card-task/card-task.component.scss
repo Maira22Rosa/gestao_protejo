@@ -1,0 +1,112 @@
+$status-colors: (
+  PENDENTE: rgb(18, 122, 170),
+  EM_ANDAMENTO: orange,
+  CONCLUIDA: green,
+);
+.container-task {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid rgb(238, 231, 231);
+  background-color: rgb(238, 231, 231);
+
+  #first-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  p {
+    font-weight: 800;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  span {
+    font-weight: 200;
+    font-size: 12px;
+  }
+
+  .status {
+    border: 2px solid transparent;
+    padding: 4px;
+    border-radius: 8px;
+    text-transform: none;
+    font-size: 10px;
+
+    @each $status, $color in $status-colors {
+      &--#{$status} {
+        border-color: $color;
+        color: $color;
+        text-transform: none;
+      }
+    }
+  }
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: #fff;
+  border: 2px solid rgb(72, 121, 211);
+  border-radius: 8px;
+  padding: 24px;
+  width: 400px;
+  box-shadow: 0 0 12px rgba(87, 136, 226, 0.4);
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+h6 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+  color: #333;
+  font-size: 14px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid rgb(0, 89, 255);
+  border-radius: 4px;
+  margin-top: 4px;
+  outline-color: rgb(0, 89, 255);
+}
+
+button {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: rgb(0, 89, 255);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(0, 70, 200);
+}
+
+.icon {
+  cursor: pointer;
+  color: rgb(0, 89, 255);
+}
+
+.icon:hover {
+  color: red;
+}
