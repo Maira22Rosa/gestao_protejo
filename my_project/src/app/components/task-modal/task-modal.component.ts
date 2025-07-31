@@ -17,6 +17,7 @@ export class TaskModalComponent {
     projetoId: new FormControl(''),
     dataCriacao: new FormControl(''),
     dataAtualizacao: new FormControl(''),
+    status: new FormControl(''),
   });
   @Input() task: TarefaDto = {
     taskId: '',
@@ -45,13 +46,18 @@ export class TaskModalComponent {
   }
 
   enviar() {
+    console.log(this.task, this.isEditing);
     const now = new Date().toISOString();
     if (this.isEditing) {
       const updatedTask = {
         taskId: this.task.taskId,
         titulo: this.taskForm.value.titulo || '',
         descricao: this.taskForm.value.descricao || '',
-        status: this.task.status,
+        status:
+          (this.taskForm.value.status as
+            | 'PENDENTE'
+            | 'EM_ANDAMENTO'
+            | 'CONCLUIDA') || 'PENDENTE',
         dataVencimento: this.taskForm.value.dataVencimento || '',
         projetoId: this.projectId!,
         dataCriacao: this.task.dataCriacao,

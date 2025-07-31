@@ -38,6 +38,7 @@ export class ProjectsComponent implements OnInit {
     projetoId: new FormControl(''),
     dataCriacao: new FormControl(''),
     dataAtualizacao: new FormControl(''),
+    status: new FormControl(''),
   });
 
   constructor(private projectService: ProjectService) {}
@@ -106,6 +107,7 @@ export class ProjectsComponent implements OnInit {
       dataVencimento: this.formatDateToBR(
         this.task.dataVencimento || '00/00/0000'
       ),
+      status: this.task.status,
       dataCriacao: this.formatDateToBR(this.task.dataCriacao),
       dataAtualizacao: this.formatDateToBR(this.task.dataAtualizacao),
     });

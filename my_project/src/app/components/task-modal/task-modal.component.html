@@ -30,6 +30,20 @@
       Data de Atualização:
       <input type="text" formControlName="dataAtualizacao" />
     </label>
+
+    <label>
+      Data de Atualização:
+      <input type="text" formControlName="dataAtualizacao" />
+    </label>
+    <ng-container *ngIf="isEditing"
+      ><label for="status">Status:</label>
+      <select id="status" name="status" formControlName="status">
+        <option value="PENDENTE">Pendente</option>
+        <option value="EM_ANDAMENTO">Em andamento</option>
+        <option value="CONCLUIDA">Concluído</option>
+      </select></ng-container
+    >
+
     <div class="actions">
       <button type="submit" (click)="enviar()">Salvar</button>
       <button type="submit" class="delete-btn" (click)="excluir()">
