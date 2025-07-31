@@ -106,3 +106,9 @@ section {
   align-items: center;
   z-index: 999;
 }
+
+@media (max-width: 442px) {
+  section h4 {
+    display: grid;
+  }
+}

@@ -110,3 +110,8 @@ button:hover {
 .icon:hover {
   color: red;
 }
+@media (max-width: 442px) {
+  #first-line {
+    display: block !important;
+  }
+}
