@@ -1,0 +1,21 @@
+<div class="modal-content" (click)="$event.stopPropagation()">
+  <h6>
+    Adicionar projeto
+    <span (click)="close.emit()" class="material-symbols-outlined icon"
+      >close</span
+    >
+  </h6>
+  <form [formGroup]="projectForm">
+    <label>
+      Nome:
+      <input type="text" formControlName="nome" />
+    </label>
+
+    <label>
+      Descrição:
+      <input type="text" formControlName="descricao" />
+    </label>
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>

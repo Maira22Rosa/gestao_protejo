@@ -9,6 +9,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { CardTaskComponent } from './components/card-task/card-task.component';
+import { TaskModalComponent } from './components/task-modal/task-modal.component';
+import { ProjectModalComponent } from './components/project-modal/project-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CardTaskComponent } from './components/card-task/card-task.component';
     TopMenuComponent,
     ProjectsComponent,
     CardTaskComponent,
+    TaskModalComponent,
+    ProjectModalComponent,
   ],
   imports: [
     BrowserModule,

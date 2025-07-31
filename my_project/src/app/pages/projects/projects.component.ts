@@ -10,7 +10,7 @@ import projectsJson from 'src/app/dados/projects-api.json';
 export class ProjectsComponent implements OnInit {
   viewTaksProjectId: string | null = null;
   viewTaks: boolean = false;
-  meuFormulario = new FormGroup({
+  projectForm = new FormGroup({
     nome: new FormControl(''),
     descricao: new FormControl(''),
   });
@@ -33,6 +33,7 @@ export class ProjectsComponent implements OnInit {
     dataCriacao: new FormControl(''),
     dataAtualizacao: new FormControl(''),
   });
+
   constructor() {}
   ngOnInit() {
     this.listProjects = projectsJson;
@@ -47,12 +48,8 @@ export class ProjectsComponent implements OnInit {
     this.viewModal = this.viewModal ? false : true;
   }
 
-  close() {
-    this.viewModal = this.viewModal ? false : true;
-  }
-
   onSubmit() {
-    console.log(this.meuFormulario.value);
+    console.log(this.projectForm.value);
   }
 
   showDadosTask(taskId: string, projectId: string) {

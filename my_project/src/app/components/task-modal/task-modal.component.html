@@ -1,0 +1,36 @@
+<div class="modal-content" (click)="$event.stopPropagation()">
+  <h6>
+    Tarefa {{ task.taskId }} - {{ task.status.toLowerCase() }}
+    <span class="material-symbols-outlined icon" (click)="close.emit()"
+      >close</span
+    >
+  </h6>
+  <form [formGroup]="taskForm">
+    <label>
+      Título:
+      <input type="text" formControlName="titulo" />
+    </label>
+
+    <label>
+      Descrição:
+      <input type="text" formControlName="descricao" />
+    </label>
+
+    <label>
+      Data de Vencimento:
+      <input type="text" formControlName="dataVencimento" />
+    </label>
+
+    <label>
+      Data de Criação:
+      <input type="text" formControlName="dataCriacao" />
+    </label>
+
+    <label>
+      Data de Atualização:
+      <input type="text" formControlName="dataAtualizacao" />
+    </label>
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>

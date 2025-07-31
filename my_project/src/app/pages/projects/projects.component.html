@@ -45,66 +45,15 @@
 </div>
 
 <div *ngIf="viewModalTask" class="modal-backdrop">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <h6>
-      Tarefa {{ task.taskId }} - {{ task.status.toLowerCase() }}
-      <span
-        class="material-symbols-outlined icon"
-        (click)="viewModalTask = false"
-        >close</span
-      >
-    </h6>
-    <form [formGroup]="taskForm">
-      <label>
-        Título:
-        <input type="text" formControlName="titulo" />
-      </label>
-
-      <label>
-        Descrição:
-        <input type="text" formControlName="descricao" />
-      </label>
-
-      <label>
-        Data de Vencimento:
-        <input type="text" formControlName="dataVencimento" />
-      </label>
-
-      <label>
-        Data de Criação:
-        <input type="text" formControlName="dataCriacao" />
-      </label>
-
-      <label>
-        Data de Atualização:
-        <input type="text" formControlName="dataAtualizacao" />
-      </label>
-
-      <button type="submit">Salvar</button>
-    </form>
-  </div>
+  <app-task-modal
+    (close)="viewModalTask = false"
+    [taskForm]="taskForm"
+  ></app-task-modal>
 </div>
 
-<div *ngIf="viewModal" class="modal-backdrop" (click)="close()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <h6>
-      Adicionar projeto
-      <span (click)="close()" class="material-symbols-outlined icon"
-        >close</span
-      >
-    </h6>
-    <form [formGroup]="meuFormulario" (ngSubmit)="onSubmit()">
-      <label>
-        Nome:
-        <input type="text" formControlName="nome" />
-      </label>
-
-      <label>
-        Descrição:
-        <input type="text" formControlName="descricao" />
-      </label>
-
-      <button type="submit">Salvar</button>
-    </form>
-  </div>
+<div *ngIf="viewModal" class="modal-backdrop">
+  <app-project-modal
+    (close)="viewModal = false"
+    [projectForm]="projectForm"
+  ></app-project-modal>
 </div>
