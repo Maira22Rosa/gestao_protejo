@@ -27,3 +27,9 @@ Responsividade
 
 
 Como principal foco os metodos CRUDS e visualização de todas as ações,foi criado um json mockado para simular uma api e seu consumo. Tentei mesmo usando os dados mockados, trazer a logica na aplicação, tratando ate a conversão de datas(UTC) quanto o enum dos status.
+
+*Vídeo demonstrativo*
+
+https://github.com/user-attachments/assets/55d660d7-4fc8-4158-b211-49ee58bcc06a
+
+
