@@ -17,6 +17,11 @@ Visualização das tarefas
 Adição e edição de um projeto
 <img width="737" height="507" alt="image" src="https://github.com/user-attachments/assets/f10cfe17-e6bb-4958-adf4-97cecb21d959" />
 
+Responsividade
+<img width="678" height="691" alt="image" src="https://github.com/user-attachments/assets/af0def8e-dd4c-4967-83da-6ad6dd0bdaf0" />
+<img width="628" height="547" alt="image" src="https://github.com/user-attachments/assets/afc35442-080f-40fa-9c9d-3d0c46576aac" />
+
+
 
 Edição e exclusão de uma tarefa
 <img width="705" height="782" alt="image" src="https://github.com/user-attachments/assets/c372e6cf-cee0-4b3d-9dbf-c8fe097a3a2c" />
